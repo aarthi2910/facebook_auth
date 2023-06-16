@@ -1,0 +1,49 @@
+<html>
+<head>
+<title>Facebook Login JavaScript Example</title>
+<meta charset="UTF-8">
+</head>
+<body>
+
+
+<!-- The JS SDK Login Button -->
+
+<!-- <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+</fb:login-button>
+
+<div id="status">
+</div> -->
+
+<!-- Load the JS SDK asynchronously -->
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
+
+<!-- <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v12.0&appId=YOUR_APP_ID&autoLogAppEvents=1" nonce="YOUR_NONCE_VALUE"></script> -->
+
+<button onclick="loginWithFacebook()">Log in with Facebook</button>
+
+<script>
+
+  function loginWithFacebook() {
+  FB.login(function(response) {
+    if (response.authResponse) {
+      // User is logged in and authorized your app
+      var accessToken = response.authResponse.accessToken;
+      // Use the access token to perform further operations, such as fetching user data
+      // You can make API calls using the access token or pass it to your server for verification
+    } else {
+      // User canceled the login or did not authorize your app
+    }
+  }, { scope: 'email' }); // Specify the required permissions here
+}
+
+window.fbAsyncInit = function() {
+  FB.init({
+    appId: '571635491815292',
+    cookie: true,
+    xfbml: true,
+    version: 'v12.0'
+  });
+};
+</script>
+</body>
+</html>
